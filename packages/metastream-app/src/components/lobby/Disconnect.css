@@ -1,0 +1,33 @@
+.container {
+  composes: fill-center from '~styles/layout.css';
+  background: var(--app-bg-lobby);
+}
+
+.header {
+  composes: h2 from '~styles/typography.css';
+  margin-bottom: 1rem;
+}
+
+.info {
+  composes: center-vertical from '~styles/layout.css';
+  composes: select-text from '~styles/text.css';
+  padding: 0 1rem;
+  max-width: 600px;
+}
+
+.info svg {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.info a {
+  text-decoration: underline;
+}
+
+.titlebar {
+  composes: titlebar from '../GameLobby.css';
+}
+
+.buttonrow > *:not(:last-child) {
+  margin-right: 1rem;
+}

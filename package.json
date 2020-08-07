@@ -1,0 +1,16 @@
+{
+  "name": "metastream",
+  "version": "1.0.0",
+  "description": "Metastream root",
+  "private": true,
+  "workspaces": [
+    "packages/metastream-app",
+    "packages/metastream-signal-server"
+  ],
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "jsonEnable": false,
+    "semi": false
+  }
+}

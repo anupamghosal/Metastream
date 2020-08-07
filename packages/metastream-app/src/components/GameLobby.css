@@ -1,0 +1,148 @@
+.container {
+  background: linear-gradient(
+    170deg,
+    #20202f 0%,
+    #273550 16%,
+    #416081 41%,
+    #adacb2 78%,
+    #eac3a2 100%
+  );
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  --overlay-z-index: 10;
+  --playback-overlay-z-index: 11;
+  --modal-z-index: 12;
+
+  --overlay-spacing: 50px;
+  --overlay-list-max-width: none;
+  --overlay-anim-duration: 160ms;
+  --chat-docked-width: 21rem;
+  --chat-float-bottom-spacing: 150px;
+}
+
+@media only screen and (max-width: 840px) {
+  .container {
+    --overlay-spacing: 0px;
+    --overlay-list-max-width: 42%;
+    --chat-docked-width: 15rem;
+    --chat-float-bottom-spacing: 3rem;
+  }
+}
+
+.overlay {
+  position: absolute;
+  z-index: var(--overlay-z-index);
+  opacity: 1;
+  transition: opacity var(--overlay-anim-duration) ease-in;
+}
+
+:global(.lobbyInactive) .overlay {
+  opacity: 0;
+  backdrop-filter: none;
+}
+
+:global(.modalVisible) .overlay {
+  opacity: 0;
+  transition: none;
+}
+
+:global(.modalVisible) .titlebar {
+  opacity: 1;
+}
+
+/* Force mouse cursor to be hidden */
+.inactiveOverlay {
+  composes: absolute-full from '~styles/layout.css';
+  z-index: 999;
+  cursor: none;
+}
+
+.video {
+  composes: absolute-full from '~styles/layout.css';
+}
+
+.playbackControls {
+  composes: overlay;
+  z-index: var(--playback-overlay-z-index);
+  left: var(--overlay-spacing);
+  right: var(--overlay-spacing);
+  bottom: var(--overlay-spacing);
+}
+
+.titlebar {
+  composes: overlay;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.controls {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.controlsDocked {
+  right: var(--chat-docked-width);
+}
+
+.chatFloat {
+  position: absolute;
+  z-index: var(--overlay-z-index);
+  left: var(--overlay-spacing);
+  bottom: var(--chat-float-bottom-spacing);
+  width: 450px;
+
+  --num-chat-lines: 6.85;
+  --chat-line-height: 1.25rem;
+  --chat-input-height: 2.5rem;
+  height: calc(var(--chat-input-height) + var(--chat-line-height) * var(--num-chat-lines));
+}
+
+.chatDocked {
+  position: absolute;
+  z-index: var(--overlay-z-index);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--chat-docked-width);
+}
+
+.overlayList {
+  composes: glass rounded from '~styles/layout.css';
+  composes: overlay;
+  width: 19rem;
+  height: 15rem;
+  -webkit-mask-image: linear-gradient(180deg, white 0%, white 20%, transparent 100%);
+}
+
+.overlayList:global(.active),
+.overlayList:hover {
+  /* Fully opaque mask to hack bgblur from breaking */
+  -webkit-mask-image: linear-gradient(#000, #000);
+}
+
+.users,
+.queue {
+  composes: overlayList;
+  top: calc(var(--overlay-spacing) + var(--app-titlebar-height));
+  max-width: var(--overlay-list-max-width);
+}
+
+.users {
+  left: var(--overlay-spacing);
+}
+
+.queue {
+  right: var(--overlay-spacing);
+}
+
+.modal {
+  composes: absolute-full from '~styles/layout.css';
+  top: var(--app-titlebar-height) !important;
+  z-index: var(--modal-z-index);
+}

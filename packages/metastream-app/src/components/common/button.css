@@ -1,0 +1,97 @@
+.highlightBtn {
+  width: auto;
+  padding: 0 5px;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.highlightBtn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.outline {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.outline:hover,
+.outline:active {
+  box-shadow: none;
+  background: var(--color-highlight);
+}
+
+.highlight {
+  background: var(--color-highlight);
+}
+.highlight:hover {
+  filter: brightness(1.1);
+}
+.highlight:active,
+.outline:active {
+  filter: brightness(0.9);
+}
+
+.glass {
+  composes: masked-glass from '~styles/effect.css';
+}
+
+.highlight.glass {
+  background: var(--color-highlight-transparent);
+}
+
+.blend > * {
+  mix-blend-mode: color-burn;
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+.small svg {
+  transform: scale(0.82);
+}
+
+.medium {
+  padding: 0 0.75rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+}
+
+.medium svg {
+  margin-right: 0.625rem;
+}
+
+.large {
+  padding: 0.625rem 1rem;
+  height: 3.75rem;
+  font-size: 1.5rem;
+}
+
+.large svg {
+  margin-right: 0.875rem;
+}
+
+.tooltip {
+  composes: absolute-full from '~styles/layout.css';
+}
+
+.iconButton {
+  display: flex;
+}
+
+.iconChildren {
+  align-self: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.iconHighlight {
+  color: var(--color-highlight);
+  font-weight: bolder;
+}

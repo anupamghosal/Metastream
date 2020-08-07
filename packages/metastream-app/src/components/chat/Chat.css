@@ -1,0 +1,209 @@
+.container {
+  --chat-fade-delay: 10s;
+  --chat-fade-duration: 1s;
+  --chat-input-height: 2.5rem;
+  --chat-typing-height: 1rem;
+  --chat-form-height: calc(var(--chat-input-height) + var(--chat-typing-height));
+
+  display: block;
+}
+
+.fade:not(.focused) {
+  pointer-events: none;
+}
+
+.fade:not(.focused) .fadeBackground,
+.fade:not(.focused) .messageInput {
+  opacity: 0;
+}
+
+.fade:not(.focused) .form {
+  background-color: transparent;
+}
+
+.fade:not(.focused) .messages {
+  user-select: none;
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.anim-opacity {
+  opacity: 1;
+  transition: opacity var(--overlay-anim-duration) ease-in;
+}
+
+.anim-bg {
+  transition: background-color var(--overlay-anim-duration) ease-in;
+}
+
+.fadeBackground {
+  composes: glass rounded absolute-full from '~styles/layout.css';
+  composes: anim-opacity;
+  z-index: 4;
+}
+
+.staticBackground {
+  composes: absolute-full from '~styles/layout.css';
+}
+
+.foreground {
+  composes: absolute-full from '~styles/layout.css';
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.chatWrapper {
+  display: flex;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.messages {
+  composes: scroller from '~styles/layout.css';
+  max-height: 100%;
+  flex-grow: 1;
+  /* align-self: flex-end; */
+  overflow-y: auto;
+  position: relative;
+  cursor: auto;
+  user-select: text;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.message {
+  width: 100%;
+  padding: 2px 8px;
+  word-break: break-word;
+}
+
+.fade .message,
+.fade .typing {
+  text-shadow: 1px 1px 1px var(--color-chat-text-outline),
+    -1px -1px 1px var(--color-chat-text-outline), 1px -1px 1px var(--color-chat-text-outline),
+    -1px 1px 1px var(--color-chat-text-outline), 0 0 2px var(--color-chat-text-outline);
+}
+
+.fade .message {
+  animation: var(--chat-fade-duration) ease-in var(--chat-fade-delay);
+  animation-name: fadeout;
+  /* Maintain transparency after animation finishes */
+  animation-fill-mode: forwards;
+}
+
+.fade.focused .message {
+  /* Reveal chat on focus */
+  opacity: 1 !important;
+  animation-fill-mode: none;
+}
+
+.newMessages {
+  position: absolute;
+  bottom: var(--chat-form-height);
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 7px;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.textPrefix {
+  margin-right: 0.5rem;
+}
+
+.timestamp {
+  composes: textPrefix;
+  font-size: 0.625rem;
+  color: var(--color-transparent-light-50);
+}
+
+.username {
+  composes: single-line from '~styles/text.css';
+  color: var(--color-nice-blue);
+  font-weight: bold;
+  max-width: 240px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.mediaTitle {
+  color: var(--color-highlight);
+  font-weight: bold;
+}
+
+.broadcast {
+  font-style: italic;
+}
+
+.form {
+  composes: anim-bg;
+  width: 100%;
+  position: relative;
+  background: rgba(0, 0, 0, 0.11);
+
+  --horizontal-padding: 12px;
+}
+
+.fade .form {
+  border-radius: 0 0 var(--rounded-radius) var(--rounded-radius);
+}
+
+.messageInput {
+  composes: anim-opacity;
+  width: 100%;
+  height: var(--chat-input-height);
+  padding: 8px var(--horizontal-padding);
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.messageInput::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.hint {
+  composes: absolute-full center-vertical from '~styles/layout.css';
+  padding: 0 var(--horizontal-padding);
+  font-style: italic;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.btnLayout {
+  position: absolute !important;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity var(--overlay-anim-duration) ease-in;
+}
+
+.fade.focused .btnLayout {
+  opacity: 0.22;
+}
+
+.container:hover .btnLayout {
+  opacity: 0.8;
+}
+
+.typing {
+  composes: single-line from '~styles/text.css';
+  height: var(--chat-typing-height);
+  font-size: 0.75rem;
+  padding: 0 var(--horizontal-padding);
+  overflow: hidden;
+}

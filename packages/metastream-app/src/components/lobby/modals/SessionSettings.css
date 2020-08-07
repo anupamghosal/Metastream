@@ -1,0 +1,35 @@
+.container {
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  composes: label from '~styles/typography.css';
+  display: block;
+}
+
+.descLabel {
+  display: block;
+}
+
+.sessionModes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.sessionMode button:not(:first-of-type) {
+  margin-left: 1rem;
+}
+
+.idContainer {
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.idText {
+  font-size: 14px;
+}

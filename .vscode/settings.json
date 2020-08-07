@@ -1,0 +1,10 @@
+{
+  "search.exclude": {
+    ".git": true,
+    "node_modules": true,
+    "__snapshots__": true,
+    "bower_components": true,
+    "app": true
+  },
+  "eslint.enable": false
+}

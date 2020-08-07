@@ -1,0 +1,12 @@
+.container {
+  composes: fill-center from '~styles/layout.css';
+  background: var(--color-transparent-dark-50);
+}
+
+.badgeList img {
+  height: 3.75rem;
+}
+
+.badgeList a:not(:last-child) {
+  margin-right: 1rem;
+}

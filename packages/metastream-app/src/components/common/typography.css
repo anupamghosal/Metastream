@@ -1,0 +1,27 @@
+.highlightText {
+  color: var(--color-highlight);
+  font-weight: bold;
+}
+
+.mediumText {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
+.dimLink {
+  opacity: 0.5;
+  text-decoration: underline;
+}
+
+.dimLink:hover {
+  text-decoration: none;
+}
+
+.monospaceText {
+  font-family: 'Noto Mono', monospace;
+}
+
+.timestampLinkText {
+  composes: monospaceText;
+  font-size: 0.8rem;
+}

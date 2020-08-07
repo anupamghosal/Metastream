@@ -1,0 +1,52 @@
+.container {
+  --interact-border: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.video {
+  flex-grow: 1;
+}
+
+.video.initializing {
+  opacity: 0;
+}
+
+.video.playing {
+  /* Should be lighter than #000 so text can be read */
+  background: #444;
+}
+
+.video.mediaReady {
+  background: #000;
+}
+
+.interactTrigger {
+  composes: absolute-full from '~styles/layout.css';
+  z-index: 2;
+
+  /** WTF: Overlay must have slight visibility to capture mouse events from webview */
+  background: black;
+  opacity: 0.000001;
+}
+
+.interactNotice {
+  min-height: var(--app-titlebar-height);
+  padding: 4px var(--interact-border);
+  color: #fff;
+  background: #c0392b;
+  position: relative;
+}
+
+.btnExitInteract {
+  composes: absolute-vertical-center from '~styles/layout.css';
+  right: calc(var(--interact-border) / 2);
+}
+
+.interactive {
+  border: var(--interact-border) solid #c0392b;
+  border-top: none;
+}

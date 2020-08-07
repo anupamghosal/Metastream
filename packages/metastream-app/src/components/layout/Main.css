@@ -1,0 +1,24 @@
+.container {
+  height: 100%;
+  position: relative;
+}
+
+.titleBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.content {
+  --content-spacing: 3rem;
+  padding: var(--content-spacing);
+  padding-top: calc(var(--app-titlebar-height) + var(--content-spacing));
+  overflow: auto;
+}
+
+@media only screen and (max-width: 840px) {
+  .content {
+    --content-spacing: 1rem;
+  }
+}

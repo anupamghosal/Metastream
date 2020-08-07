@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.container.sessionSettings {
+  align-items: center;
+}
+
+.columns {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 0 auto;
+}
+
+.bottom {
+  width: 100%;
+}
+
+.tabSidebar {
+  width: 12rem;
+}
+
+.tabItem {
+  width: 100%;
+  opacity: 0.4;
+}
+
+.tabItem button {
+  width: 100%;
+  padding: 0.5rem 0;
+  margin-bottom: 0.2rem;
+  text-align: left;
+}
+
+.selectedTab {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.content {
+  width: 100%;
+  max-width: 38rem;
+}
+
+.content h2 {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section > label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.section > input:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.colorSwatch,
+.colorSwatch::-webkit-color-swatch-wrapper,
+.colorSwatch::-webkit-color-swatch {
+  padding: 0;
+  border: none;
+}
+
+.colorSwatch {
+  composes: circle from '~styles/layout.css';
+  width: 40px;
+  height: 40px;
+  outline: none;
+}
+
+.colorSwatch:disabled {
+  cursor: not-allowed;
+}
+
+.avatarContainer {
+  margin-bottom: 0.8rem;
+}
+
+.avatarList {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.2rem;
+}
+
+.avatarList > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.blend {
+  composes: blend-text-invert from '~styles/text.css';
+}

@@ -1,0 +1,34 @@
+.single-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-text {
+  user-select: text;
+  cursor: auto;
+}
+
+.blend-text {
+  mix-blend-mode: overlay;
+  color: black;
+}
+
+.blend-text-invert {
+  mix-blend-mode: overlay;
+  color: white;
+}
+
+@media (prefers-contrast: high) {
+  .blend-text,
+  .blend-text-invert {
+    mix-blend-mode: normal;
+  }
+}
+
+/* Provide better contrast for blend text on transparent backgrounds. */
+:global(.transparent) .blend-text,
+:global(.transparent) .blend-text-invert {
+  mix-blend-mode: normal;
+  opacity: 0.8;
+}

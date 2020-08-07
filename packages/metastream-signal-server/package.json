@@ -1,0 +1,36 @@
+{
+  "name": "@metastream/signal-server",
+  "version": "1.3.1",
+  "description": "WebRTC signaling server solution for Metastream.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "cli.js",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node ./cli.js",
+    "test": "jest"
+  },
+  "author": "Samuel Maddock",
+  "license": "MIT",
+  "dependencies": {
+    "libsodium-wrappers": "^0.7.4",
+    "simple-peer": "^9.4.0",
+    "ws": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/libsodium-wrappers": "^0.7.2",
+    "@types/simple-peer": "^6.1.5",
+    "@types/ws": "^6.0.1",
+    "jest": "^25.1.0",
+    "mock-socket": "^9.0.3",
+    "typescript": "^3.8.3",
+    "wrtc": "^0.4.4"
+  },
+  "bin": {
+    "signal-server": "./cli.js"
+  }
+}

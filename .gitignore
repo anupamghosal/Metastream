@@ -1,0 +1,28 @@
+# Local env vars
+*.env
+!.example.env
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# Build output
+dist
+.awcache
+
+# OSX
+.DS_Store
+
+.idea
+npm-debug.log.*
+*.todo
+*.pem

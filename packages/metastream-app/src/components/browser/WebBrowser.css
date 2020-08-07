@@ -1,0 +1,32 @@
+.container {
+  composes: dark-overlay from '~styles/layout.css';
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  flex: 0 0 auto;
+}
+
+.content {
+  flex: 1 0 auto;
+  margin: 1rem 1.5rem 1.5rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+}
+
+@media only screen and (max-width: 840px) {
+  .content {
+    margin: 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+}
+
+.donateBar {
+  margin: 0 1.5rem 1.5rem 1.5rem;
+}

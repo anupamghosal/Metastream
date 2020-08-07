@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext", "dom"],
+    "types": ["jest"],
+    "allowJs": true,
+    "jsx": "react",
+
+    "strict": true,
+    "noImplicitThis": false,
+
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "rootDirs": ["src", "../../node_modules"],
+    "allowSyntheticDefaultImports": true,
+
+    "esModuleInterop": true
+  },
+  "exclude": [".awcache", "node_modules", "dist"]
+}

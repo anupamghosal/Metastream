@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  composes: scroller from '~styles/layout.css';
+  overflow-y: auto;
+  flex-grow: 1;
+}
